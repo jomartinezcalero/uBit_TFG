@@ -10,9 +10,7 @@
 #define UART_NUM UART_NUM_0 // Definimos el número de UART que utilizaremos (UART0 en este caso)
 #define RX_BUF_SIZE 1024   // Tamaño del búfer de recepción
 
-
-
-void init_uart() {
+void init_uart(void) {
     uart_config_t uart_config = {
         .baud_rate = 115200,
         .data_bits = UART_DATA_8_BITS,
@@ -30,8 +28,6 @@ void init_uart() {
     // Instalación del driver de UART
     uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
 }
-
-
 
 void uart_print_test(int num_input, char *frase) {
     // Asignar memoria para el buffer de entrada
@@ -59,16 +55,3 @@ void uart_print_test(int num_input, char *frase) {
     // Liberar la memoria asignada dinámicamente
     free(input);
 }
-
-/*
-void app_main(void) {
-    init_uart(); // Configurar UART
-   // uint8_t *input = (uint8_t *) malloc(RX_BUF_SIZE + 1);
-
-    while (1) {
-    	//read_uart_function(input);
-    	uart_print_test(2,"\n chau \n");
-        }
-}
-*/
-
